@@ -1,0 +1,38 @@
+{
+'{"Artist": {"S": "zega pagodinho"}, "SongTitle": {"S": "faixa amarela"}, "AlbumTitle": {"S": "deixa vida me levar"}, "Awards": {"N": "1"}}'
+
+aws dynamodb put-item \
+    --table-name Pagode  \
+    --item \
+        '{"Artist": {"S": "jorge aragao"}, "SongTitle": {"S": "encontro das aguas"}, "AlbumTitle": {"S": "da noite pra o dia"}, "Awards": {"N": "2"}}'
+
+aws dynamodb put-item \
+    --table-name Pagode \
+    --item \
+        '{"Artist": {"S": "arlindo cruz"}, "SongTitle": {"S": "o meu lugar"}, "AlbumTitle": {"S": "madureira"}, "Awards": {"N": "10"} }'
+
+aws dynamodb put-item \
+    --table-name Pagode \
+    --item \
+        '{"Artist": {"S": "zeca pagodinho"}, "SongTitle": {"S": "vai vadiar"}, "AlbumTitle": {"S": "quintal do pagodinho"}, "Awards": {"N": "8"} }'
+
+aws dynamodb put-item \
+    --table-name Pagode  \
+    --item \
+        '{"Artist": {"S": "joao noguira"}, "SongTitle": {"S": "no na madeira"}, "AlbumTitle": {"S": "alem de espelho"}, "Awards": {"N": "6"}}'
+
+aws dynamodb put-item \
+    --table-name Pagode  \
+    --item \
+        '{"Artist": {"S": "joao nogueira"}, "SongTitle": {"S": "alem do espelho"}, "AlbumTitle": {"S": "espelho"}, "Awards": {"N": "5"}}'
+
+aws dynamodb put-item \
+    --table-name Pagode \
+    --item \
+        '{"Artist": {"S": "zeca pagodinho"}, "SongTitle": {"S": "patota de cosmo"}, "AlbumTitle": {"S": "ao vivo"}, "Awards": {"N": "4"} }'
+
+aws dynamodb put-item \
+    --table-name Pagode \
+    --item \
+        '{"Artist": {"S": "zeca pagodinho"}, "SongTitle": {"S": "ratatuia"}, "AlbumTitle": {"S": "quintal do pagodinho"}, "Awards": {"N": "3"} }'
+}

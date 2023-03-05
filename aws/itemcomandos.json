@@ -1,0 +1,41 @@
+{
+CRIAÇÃO DE TABELA
+
+ aws dynamodb create-table \
+    --table-name Pagode \
+    --attribute-definitions \
+        AttributeName=Artist,AttributeType=S \
+        AttributeName=SongTitle,AttributeType=S \
+    --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --table-class STANDARD
+_____________________________________________________________________________________________________________________________
+INSERÇÃO E ATUALIZAÇÃO
+
+:/aws# aws dynamodb put-item \
+    --table-name Pagode  \
+    --item \
+ aws dynamodb get-item --consistent-read \
+    --table-name Pagode \
+    --key '{ "Artist": {"S": "joao nogueira"}, "SongTitle": {"S": "no na madeira"}}'
+_____________________________________________________________________________________________________________________________
+BUSCA/CONSULTA
+
+/aws# aws dynamodb query \
+    --table-name Pagode \
+    --key-condition-expression "Artist = :name" \
+    --expression-attribute-values  '{":name":{"S":"zeca pagodinho"}}'
+
+aws dynamodb update-table \
+    --table-name Music \
+    --attribute-definitions AttributeName=AlbumTitle,AttributeType=S \
+    --global-secondary-index-updates \
+        "[{\"Create\":{\"IndexName\": \"AlbumTitle-index\",\"KeySchema\":[{\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"HASH\"}], \
+        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+
+aws dynamodb query \
+    --table-name Pagode \
+    --index-name AlbumTitle-index \
+    --key-condition-expression "AlbumTitle = :name" \
+    --expression-attribute-values  '{":name":{"S":"espelho"}}'
+}
